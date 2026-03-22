@@ -299,6 +299,8 @@ claude-architect-exam-mastery/
 
 This is an **unofficial** study resource. It is not affiliated with, endorsed by, or produced by Anthropic. The materials are based on publicly available exam guide information and official Claude documentation. Always refer to the [official exam guide](https://everpath-course-content.s3-accelerate.amazonaws.com/instructor%2F8lsy243ftffjjy1cx9lm3o2bw%2Fpublic%2F1773274827%2FClaude+Certified+Architect+%E2%80%93+Foundations+Certification+Exam+Guide.pdf) for the most current exam specifications.
 
+These materials are designed to supplement your preparation — not replace hands-on experience. The exam tests practical judgment that comes from actually building with Claude. Use this package alongside real projects, and treat practice questions as learning tools rather than predictions of what you'll see on exam day.
+
 ---
 
 ## License
