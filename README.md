@@ -13,7 +13,7 @@
 
 A complete, self-contained study package covering **every task statement** in the Claude Certified Architect – Foundations exam. Built by a coordinated team of 5 AI agents that researched 13 official Anthropic sources and produced 47 files with 236+ unique practice questions.
 
-**Open `index.html` to start** — it's an interactive syllabus hub that links to every material, tracks your progress, and guides your study path.
+**[Open the Interactive Study Hub](https://az9713.github.io/claude-architect-exam-mastery/)** — it links to every material, tracks your progress, and guides your study path.
 
 ---
 
@@ -259,11 +259,12 @@ This isn't a hastily assembled collection — it was systematically engineered. 
 
 ## Quick Start
 
-1. **Clone this repo**
-2. **Open `index.html`** in your browser
-3. **Pick a study plan** (1-week, 3-day, or 1-day)
-4. **Follow the syllabus hub** — it links to everything and tracks your progress
-5. **Take a mock exam** when you feel ready — aim for 750+ before sitting the real exam
+1. **[Open the Interactive Study Hub](https://az9713.github.io/claude-architect-exam-mastery/)** — works directly in your browser, no download needed
+2. **Pick a study plan** (1-week, 3-day, or 1-day)
+3. **Follow the syllabus hub** — it links to everything and tracks your progress
+4. **Take a mock exam** when you feel ready — aim for 750+ before sitting the real exam
+
+> Alternatively, clone the repo and open `index.html` locally for offline use.
 
 ---
 
