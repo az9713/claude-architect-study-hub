@@ -11,7 +11,7 @@
 
 ## What Is This?
 
-A complete, self-contained study package covering **every task statement** in the Claude Certified Architect – Foundations exam. Built by a coordinated team of 5 AI agents that researched 13 official Anthropic sources and produced 47 files with 236+ unique practice questions.
+An **unofficial**, complete, self-contained study package covering **every task statement** in the Claude Certified Architect – Foundations exam. Built by a coordinated team of 5 AI agents that researched 13 official Anthropic sources and produced 47 files with 236+ unique practice questions. Not affiliated with or endorsed by Anthropic.
 
 **Official Resources:**
 - [Become a Claude Certified Architect](https://anthropic.skilljar.com/claude-certified-architect-foundations-access-request) — Register for the exam
