@@ -25,6 +25,10 @@ The hub-and-spoke architecture places the coordinator at the center: all inter-s
 **Task Statement 1.3 — Subagent Invocation and Context Passing**
 The `Task` tool is the mechanism for spawning subagents — the coordinator's `allowedTools` must include `"Task"`. Subagent context is explicitly provided in the prompt: the synthesis agent must receive web search results and document analysis outputs directly in its prompt, not via automatic inheritance. Parallel subagents are spawned by emitting multiple `Task` tool calls in a single coordinator response (not across separate turns).
 
+Important constraint: subagents cannot spawn other subagents — there is no nesting. Only the coordinator spawns subagents. All subagent communication routes back through the coordinator.
+
+Claude Code exposes three built-in subagent types: the **Explore** subagent (uses the Haiku model, read-only tools, optimized for fast and cost-efficient codebase search), the **Plan** subagent (inherits the main model, read-only tools, produces structured plans), and the **general-purpose** subagent (inherits the main model, full tool access).
+
 **Task Statement 1.6 — Task Decomposition Strategies**
 Fixed sequential pipelines (prompt chaining) work for predictable multi-aspect reviews. Dynamic adaptive decomposition works for open-ended investigation tasks where later subtasks depend on what earlier ones discover. Research systems often benefit from iterative refinement: the coordinator evaluates synthesis output for coverage gaps, re-delegates to search and analysis with targeted queries, and re-invokes synthesis until coverage is sufficient.
 

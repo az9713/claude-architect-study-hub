@@ -98,8 +98,13 @@ Prompt instructions have a non-zero failure rate. Zero-failure requirements need
 | `--output-format json` | Output as JSON | Returns plain text |
 | `--json-schema ./schema.json` | Enforce JSON schema on output | No schema enforcement |
 | `--resume <session-name>` | Resume named prior session | Starts fresh session |
+| `--bare` | Skip hooks, skills, MCP, CLAUDE.md discovery | Local config may affect output |
+| `--allowedTools` | Auto-approve specific tools (permission rule syntax) | Tool calls require interactive approval |
+| `--append-system-prompt` | Add CI-specific instructions at system prompt level | No extra system context |
 
 **The CI command**: `claude -p "Your prompt" --output-format json --json-schema ./schema.json`
+
+**Quick fact**: CLAUDE.md is loaded as **user messages** (not system prompt). It survives `/compact` — Claude Code re-reads it from disk after compaction.
 
 ---
 

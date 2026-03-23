@@ -22,6 +22,8 @@ You need to design prompts that provide actionable feedback, structure output fo
 **Task Statement 3.6 — CI/CD Integration**
 The `-p` (or `--print`) flag runs Claude Code in non-interactive mode: it processes the prompt and exits without waiting for user input. Without this flag, Claude Code hangs waiting for interactive input in CI pipelines. `--output-format json` combined with `--json-schema` produces machine-parseable structured findings for automated processing. CLAUDE.md provides project context to CI-invoked Claude Code instances. Independent review instances (a fresh Claude session reviewing code) are more effective than self-review because the generator session retains its reasoning context.
 
+Additional CI flags: `--bare` skips auto-discovery of hooks, skills, plugins, MCP servers, and CLAUDE.md — ensuring identical, reproducible results on every CI machine regardless of local configuration. `--allowedTools` auto-approves specific tools using permission rule syntax, preventing approval prompts in automated runs. `--append-system-prompt` adds CI-specific instructions at the system prompt level without modifying the user-facing prompt.
+
 **Task Statement 4.1 — Prompt Design for Precision**
 General instructions ("be conservative," "only report high-confidence findings") fail to reduce false positives. Specific categorical criteria define which issues to report versus skip. False positive categories undermine developer trust in accurate categories — even if security findings are reliable, a noisy style checker erodes trust in the whole system. The fix for a high-false-positive category is either improving its specific criteria or temporarily disabling it while improving.
 

@@ -18,7 +18,7 @@
 | `.mcp.json` | Project-level MCP config (committed to git) | Shared team tooling; use `${ENV_VAR}` for credentials |
 | `~/.claude.json` | User-level MCP config (not committed) | Personal/experimental servers only |
 | `${ENV_VAR}` | Environment variable expansion in MCP config | Never hardcode credentials |
-| MCP resource | Structured content catalog exposed by server | Reduces exploratory tool calls; gives upfront visibility |
+| MCP resource | Read-only structured content catalog exposed by server | Reduces exploratory tool calls; gives upfront visibility. Resources = read-only data catalogs (passively consumed). Tools = actions that execute operations. |
 | `Grep` | Built-in tool: searches file contents | Content patterns — NOT file path patterns |
 | `Glob` | Built-in tool: matches file paths/names | File names/paths — NOT file contents |
 | `Edit` | Built-in tool: targeted file modification | Fails on non-unique anchor text → use Read+Write |
@@ -28,6 +28,8 @@
 ## Decision Matrix
 
 ### Which `tool_choice` setting?
+
+Exam pattern: "unknown document type" → `"any"`, "specific extraction first" → forced, "may respond conversationally" → `"auto"`.
 
 | Scenario | Setting |
 |----------|---------|

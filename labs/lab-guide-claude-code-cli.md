@@ -86,6 +86,11 @@ Navigate into `src/services/` and run `/memory` again — you should also see `s
 - **Directory-level files load when Claude Code is in that directory** — test this by comparing `/memory` output at root vs inside `src/services/`
 - **All three levels are loaded simultaneously** when in `src/services/`
 
+### Key Facts About CLAUDE.md
+- CLAUDE.md content is injected as **user messages**, not as part of the system prompt.
+- Content survives `/compact` — Claude Code re-reads CLAUDE.md files from disk after compaction, so instructions remain active in long sessions.
+- Keep each CLAUDE.md file under 200 lines for best adherence; large files dilute instruction quality.
+
 ### Exam Relevance
 Question type: "A new team member is not receiving the TypeScript strict mode conventions. You wrote them in `~/.claude/CLAUDE.md` on your machine. What is the problem?" — Answer: user-level configuration is not shared via version control.
 
@@ -540,6 +545,11 @@ print(f'Review passed. {len(findings)} findings logged.')
 - **With `-p`**: Exits after producing output
 - **`--output-format json --json-schema`**: Output is machine-parseable with guaranteed structure
 
+### Additional CI Flags
+- **`--bare`**: Skips auto-discovery of hooks, skills, plugins, MCP servers, and CLAUDE.md. Use this for fully reproducible CI runs where local configuration must not affect output.
+- **`--allowedTools`**: Auto-approves specific tools by name using permission rule syntax, avoiding interactive approval prompts in automated pipelines.
+- **`--append-system-prompt`**: Adds CI-specific instructions at the system prompt level (e.g., output format reminders, review scope constraints).
+
 ### Exam Relevance
 "What flag runs Claude Code in a CI pipeline without hanging?" — `-p` or `--print`. "How do you get structured output for automated PR comment posting?" — `--output-format json --json-schema schema.json`.
 
@@ -675,6 +685,8 @@ a test for [specific uncovered function]."
 - **Explore subagent** isolates verbose discovery output
 - **Main context** stays clean for implementation work
 - **Summarize before spawning** sub-agents for subsequent phases
+
+Note: The Explore subagent uses the Haiku model for cost-efficient, fast codebase search. This makes it well-suited for discovery phases where speed and cost matter more than deep reasoning.
 
 ### Exam Relevance
 "In a multi-phase task, how do you prevent context window exhaustion during the discovery phase?" — Use the Explore subagent, which isolates verbose output and returns a summary to the main context.

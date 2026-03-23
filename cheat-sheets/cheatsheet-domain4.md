@@ -43,6 +43,8 @@
 | Hallucinated field values | Nullable schema fields (`["string", "null"]`) |
 | Niche category misclassified | Enum `"other"` + detail string field |
 | Reviewer misses issues in own code | Independent review instance |
+| Developers dismissing findings — need to find systematic false positive sources | Add `detected_pattern` field tracking which code construct triggered the finding; aggregate dismissals by pattern |
+| Need to map batch results back to source documents | Use `custom_id` field in each batch request; resubmit only failed items by `custom_id` |
 
 ### Synchronous API vs. Batch API?
 

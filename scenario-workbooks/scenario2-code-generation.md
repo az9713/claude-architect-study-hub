@@ -36,6 +36,11 @@ When prose descriptions produce inconsistent results, 2–3 concrete input/outpu
 **Task Statement 5.4 — Context Management in Large Codebase Exploration**
 In extended Claude Code sessions, context degrades: models start referencing "typical patterns" rather than specific classes discovered earlier. Scratchpad files persist key findings across context boundaries. The `/compact` command reduces context usage. Subagent delegation (using the Explore subagent) isolates verbose discovery while the main agent maintains high-level coordination.
 
+Note: CLAUDE.md content survives `/compact` — Claude Code re-reads CLAUDE.md files from disk after compaction, so project and directory standards remain active even in compacted sessions.
+
+**Session Management**
+Use `--resume` to continue a prior investigation with its full context still valid (e.g., returning to a multi-day refactor). Use `fork_session` to branch from a shared analysis baseline when comparing two competing implementation approaches — each fork explores independently without mixing contexts.
+
 ---
 
 ## Practice Questions

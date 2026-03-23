@@ -129,6 +129,8 @@ print(run_agent("What's the weather like in London right now, and what will it b
 - Setting arbitrary iteration caps as the primary stopping mechanism
 - Parsing natural language like "I'm done" to determine loop termination
 
+Important: Claude can emit BOTH text and `tool_use` blocks in the same response. The presence of text content does NOT mean the loop should end — only `stop_reason == 'end_turn'` means that. Always check `stop_reason`, never the presence or absence of text blocks.
+
 ---
 
 ## Exercise 2: Tool Call Interception with Hooks
@@ -350,6 +352,8 @@ print(result)
 1. **Subagents receive NO coordinator history** — they only know what is in their prompt
 2. **Multiple Task calls in a single response** enable parallel execution
 3. **All subagent communication routes through the coordinator** for observability
+
+Note: The real Agent SDK provides the `Task` tool natively as part of the runtime. This lab simulates the coordinator-subagent pattern manually for learning purposes so you can observe the mechanics directly.
 
 ---
 

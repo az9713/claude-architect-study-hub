@@ -10,7 +10,7 @@
 | `~/.claude/CLAUDE.md` | User-level config | NOT in git; personal only; not shared with team |
 | `.claude/CLAUDE.md` or `CLAUDE.md` | Project-level config | Committed to git; ALL developers get this |
 | Directory `CLAUDE.md` | Subdirectory-level rules | Applies only within that directory subtree |
-| `@import` | Include external file in CLAUDE.md | Modular organization; import by context |
+| `@import` | Include external file in CLAUDE.md | Modular organization; supports relative/absolute/~ paths, max 5 hops |
 | `.claude/rules/` | Topic-specific rule files | Alternative to monolithic CLAUDE.md |
 | `paths:` frontmatter | YAML glob field in rules files | Loads rule ONLY when editing matching files |
 | `/memory` | Claude Code command | Shows which memory files are loaded for this session |
@@ -20,17 +20,27 @@
 | `context: fork` | Skill frontmatter option | Runs skill in isolated sub-agent; output stays separate |
 | `allowed-tools` | Skill frontmatter option | Restricts tools available during skill execution |
 | `argument-hint` | Skill frontmatter option | Prompts developer for parameter when invoked without args |
+| `disable-model-invocation: true` | Skill frontmatter option | Only user can invoke; prevents Claude from auto-triggering the skill |
+| `user-invocable: false` | Skill frontmatter option | Hidden from `/` menu; only Claude can use this skill |
 | Plan mode | Exploration before execution | Multi-file, architectural, multiple valid approaches |
 | Direct execution | Immediate implementation | Single file, clear scope, obvious approach |
 | Explore subagent | Isolates verbose discovery output | Returns summary to main agent; preserves context |
 | `-p` / `--print` flag | Non-interactive (print) mode | Required for CI/CD; prevents interactive hang |
 | `--output-format json` | Structured JSON output | Machine-parseable; pair with `--json-schema` |
+| `--bare` | Skips hooks, skills, plugins, MCP, auto memory, CLAUDE.md | Identical results on every machine; use for reproducible runs |
+| `--allowedTools` | Auto-approve specific tools | Uses permission rule syntax; skips approval prompts for listed tools |
+| `--append-system-prompt` | Add text at system prompt level | Supplements rather than replaces system prompt |
+| `--continue` | Resume most recent conversation | Picks up from last session without specifying session name |
 | Interview pattern | Claude asks questions before implementing | Surfaces unstated requirements in unfamiliar domains |
 | Test-driven iteration | Write tests first; share failures | Most effective for precise behavioral specification |
 
 ---
 
 ## Decision Matrix
+
+### CLAUDE.md Loading Behavior
+
+CLAUDE.md is loaded as **user messages** (not system prompt) — it is guidance, not enforced config. Content survives `/compact` (re-read from disk). Target under 200 lines per file. `@import` supports relative/absolute/~ paths, max 5 hops.
 
 ### CLAUDE.md level for a requirement
 
@@ -62,6 +72,8 @@
 | Verbose codebase analysis | Skill with `context: fork` |
 | Personal variant of team skill | `~/.claude/skills/` with different name |
 | Team-wide `/deploy-check` | `.claude/commands/deploy-check.md` |
+
+Scope precedence: enterprise > personal > project (higher scope wins on name conflict). Commands and skills share the same namespace: `.claude/commands/deploy.md` and `.claude/skills/deploy/SKILL.md` both create `/deploy`.
 
 ---
 

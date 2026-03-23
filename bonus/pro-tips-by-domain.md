@@ -127,6 +127,11 @@ When running automated code review or test generation in CI, Claude Code reads t
 
 For CI code review, use a separate, fresh Claude Code invocation for the review step. The generator retains its decision-making context which biases review toward confirming its own choices. An independent instance with no generation history reviews more objectively.
 
+**Tip 3.8 — Each `-p` Invocation is Fully Isolated**
+> "No state persists between `-p` invocations unless you explicitly pass it. Use `--bare` for reproducible runs."
+
+Each `claude -p` call starts with a clean slate — no memory of previous CI runs, no accumulated context. This is a feature for reproducibility: the same prompt on the same code produces the same output regardless of prior invocations. Use `--bare` to additionally skip CLAUDE.md, hooks, skills, plugins, and MCP discovery, ensuring results are identical across all CI machines. Pass prior findings explicitly via prompt content or `--resume` if continuity is required.
+
 ---
 
 ## Domain 4: Prompt Engineering & Structured Output (20%)

@@ -18,7 +18,7 @@
 | `--resume <name>` | Continues a named prior session | Use when prior context is still valid |
 | Programmatic enforcement | Code-level prerequisites that block tool calls | Deterministic; prompt instructions are probabilistic |
 | PostToolUse hook | Intercepts tool results before model processes them | Normalize heterogeneous formats |
-| PreToolCall hook | Intercepts outgoing tool calls | Block policy-violating actions (e.g., refunds > $500) |
+| PreToolUse hook | Intercepts outgoing tool calls | Block policy-violating actions (e.g., refunds > $500) |
 | Prompt chaining | Fixed sequential pipeline of steps | Predictable multi-aspect tasks (per-file then cross-file) |
 | Dynamic decomposition | Adaptive subtasks based on what is discovered | Open-ended investigation tasks |
 | Structured handoff | Summary with customer ID, root cause, refund amount, recommended action | Human agents lack conversation transcript |
@@ -33,7 +33,7 @@
 |----------|-----------|
 | Must verify customer identity before refund (financial consequence) | Programmatic prerequisite |
 | Preferred but not critical tool ordering | Prompt instruction |
-| Refund amount cap ($500 limit) | PreToolCall hook |
+| Refund amount cap ($500 limit) | PreToolUse hook |
 | Format preference for output | Prompt instruction |
 | Any rule with zero-failure-rate requirement | Programmatic / hook |
 
@@ -54,6 +54,20 @@
 | Open-ended, findings drive next steps | Dynamic decomposition |
 | Code review (per-file + cross-file) | Prompt chaining |
 | "Add comprehensive tests to legacy codebase" | Dynamic decomposition |
+
+### Hooks Configuration
+
+Hooks are configured in `settings.json` (user/project/local scope), NOT in prompts. PreToolUse blocks via exit code 2 and returns `permissionDecision: allow|deny`. PostToolUse injects `additionalContext` to transform results.
+
+### Built-in Subagent Types
+
+| Subagent Type | Model | Tools | Use Case |
+|---------------|-------|-------|----------|
+| Explore | Haiku | Read-only | Fast codebase search |
+| Plan | Inherits coordinator | Read-only | Plan mode research |
+| general-purpose | Inherits coordinator | All tools | Complex multi-step tasks |
+
+Key constraint: subagents CANNOT spawn other subagents — no nesting.
 
 ---
 
