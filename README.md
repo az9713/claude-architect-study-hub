@@ -1,4 +1,4 @@
-# Claude Architect Exam Mastery
+# Claude Architect Study Hub
 
 > **The most comprehensive, AI-generated study package for the Claude Certified Architect – Foundations exam.**
 
@@ -17,7 +17,7 @@ An **unofficial**, complete, self-contained study package covering **every task 
 - [Become a Claude Certified Architect](https://anthropic.skilljar.com/claude-certified-architect-foundations-access-request) — Register for the exam
 - [Claude Certified Architect – Foundations Certification Exam Guide](https://everpath-course-content.s3-accelerate.amazonaws.com/instructor%2F8lsy243ftffjjy1cx9lm3o2bw%2Fpublic%2F1773274827%2FClaude+Certified+Architect+%E2%80%93+Foundations+Certification+Exam+Guide.pdf) — Official exam guide (PDF)
 
-**[Open the Interactive Study Hub](https://az9713.github.io/claude-architect-exam-mastery/)** — it links to every material, tracks your progress, and guides your study path.
+**[Open the Interactive Study Hub](https://az9713.github.io/claude-architect-study-hub/)** — it links to every material, tracks your progress, and guides your study path.
 
 ---
 
@@ -310,7 +310,7 @@ Key accuracy corrections made during revision:
 
 ## Quick Start
 
-1. **[Open the Interactive Study Hub](https://az9713.github.io/claude-architect-exam-mastery/)** — works directly in your browser, no download needed
+1. **[Open the Interactive Study Hub](https://az9713.github.io/claude-architect-study-hub/)** — works directly in your browser, no download needed
 2. **Pick a study plan** (1-week, 3-day, or 1-day)
 3. **Follow the syllabus hub** — it links to everything and tracks your progress
 4. **Take a mock exam** when you feel ready — aim for 750+ before sitting the real exam
@@ -322,7 +322,7 @@ Key accuracy corrections made during revision:
 ## File Structure
 
 ```
-claude-architect-exam-mastery/
+claude-architect-study-hub/
 ├── index.html                    # Interactive syllabus hub (START HERE)
 ├── study-guide.md                # Master navigation with study plans
 ├── preparation-process.md        # How this package was built
